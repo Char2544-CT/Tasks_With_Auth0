@@ -3,6 +3,7 @@ import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import Auth0ProviderWithNavigate from "./authorization/Auth0Provider";
+import { TaskProvider } from "./context/TaskContext";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -10,7 +11,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <BrowserRouter>
     <Auth0ProviderWithNavigate>
-      <App />
+      <TaskProvider>
+        <App />
+      </TaskProvider>
     </Auth0ProviderWithNavigate>
   </BrowserRouter>
 );

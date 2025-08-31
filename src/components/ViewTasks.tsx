@@ -1,18 +1,14 @@
-//comment everything
+import TaskComponent from "../task-logic/TaskComponent";
+import NavBar from "./NavBar";
 
-//import { Card } from "react-bootstrap";
-
-/*const TaskList: React.FC<Task> = (props) => {
+const ViewTasks: React.FC = () => {
   return (
-    <Card>
-      <Card.Title>{props.title}</Card.Title>
-      <Card.Body>
-        {props.description || "No description provided"}
-        <p>{props.completed ? "Done" : "Not Done"}</p>
-        <p>{props.status}</p>
-      </Card.Body>
-    </Card>
+    <div>
+      <NavBar />
+      <h2>View Tasks</h2>
+      <TaskComponent />
+    </div>
   );
 };
 
-export default TaskList; */
+export default ViewTasks;

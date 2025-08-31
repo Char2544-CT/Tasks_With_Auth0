@@ -17,3 +17,16 @@
 .remove-btn {
   margin-left: 0.5rem;
 }
+
+/* Priority-based styles */
+.low-priority {
+  color: green;
+}
+
+.medium-priority {
+  color: orange;
+}
+
+.high-priority {
+  color: red;
+}

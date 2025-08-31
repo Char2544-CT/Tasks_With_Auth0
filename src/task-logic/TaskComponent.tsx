@@ -1,14 +1,11 @@
-import { useReducer, useState } from "react";
-import taskReducer from "./TaskReducer";
+import { useState } from "react";
+//import taskReducer from "./TaskReducer";
 import Task from "./Task";
 import "./TaskComponent.css";
+import { useTaskContext } from "../context/TaskContext";
 
 const TaskComponent: React.FC = () => {
-  const [state, dispatch] = useReducer(taskReducer, {
-    tasks: [],
-    loading: false,
-    error: null,
-  });
+  const { state, dispatch } = useTaskContext();
 
   const [newTask, setNewTask] = useState<Task>({
     id: "",
@@ -41,7 +38,6 @@ const TaskComponent: React.FC = () => {
   return (
     <div>
       <h1>Task Management</h1>
-      {/* Add Task Form */}
       <form onSubmit={addTask} className="task-form">
         <input
           type="text"
@@ -75,9 +71,15 @@ const TaskComponent: React.FC = () => {
             })
           }
         >
-          <option value="low">Low</option>
-          <option value="medium">Medium</option>
-          <option value="high">High</option>
+          <option value="low" className="low-priority">
+            Low
+          </option>
+          <option value="medium" className="medium-priority">
+            Medium
+          </option>
+          <option value="high" className="high-priority">
+            High
+          </option>
         </select>
         <button type="submit">Add Task</button>
       </form>
