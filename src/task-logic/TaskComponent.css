@@ -1,0 +1,19 @@
+.task-form {
+  margin-bottom: 1rem;
+}
+
+.task-error {
+  color: red;
+}
+
+.task-list-item {
+  margin-bottom: 0.5rem;
+}
+
+.task-completed {
+  text-decoration: line-through;
+}
+
+.remove-btn {
+  margin-left: 0.5rem;
+}
