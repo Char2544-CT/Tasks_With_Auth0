@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 //import taskReducer from "./TaskReducer";
 import Task from "./Task";
 import "./TaskComponent.css";
@@ -97,7 +98,9 @@ const TaskComponent: React.FC = () => {
               task.completed ? " task-completed" : ""
             }`}
           >
-            <strong>{task.title}</strong> ({task.priority})<br />
+            <strong>{task.title}</strong> (
+            <span className={`${task.priority}-priority`}>{task.priority}</span>
+            )<br />
             {task.description && (
               <span>
                 {task.description}
@@ -114,6 +117,9 @@ const TaskComponent: React.FC = () => {
             <button onClick={() => removeTask(task.id)} className="remove-btn">
               Remove
             </button>
+            <Link to={`/edit/${task.id}`} style={{ marginLeft: "0.5rem" }}>
+              Edit
+            </Link>
           </li>
         ))}
       </ul>
