@@ -10,8 +10,7 @@ const NavBar: React.FC = () => {
         <Nav.Link href="/">Logout |</Nav.Link>
         {isAuthenticated && (
           <>
-            <Nav.Link href="/view"> View Tasks |</Nav.Link>
-            <Nav.Link href="/edit"> Edit Task |</Nav.Link>
+            <Nav.Link href="/view"> View Tasks </Nav.Link>
           </>
         )}
       </Nav>

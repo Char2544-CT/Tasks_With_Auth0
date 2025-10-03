@@ -7,6 +7,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Profile from "./components/Profile";
 import ViewTasks from "./components/ViewTasks";
 import EditTask from "./components/EditTask";
+import CallbackPage from "./authorization/CallbackPage";
 
 const App: React.FC = () => {
   const { isLoading } = useAuth0();
@@ -18,7 +19,8 @@ const App: React.FC = () => {
       <Route path="/" element={<HomePage />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/view" element={<ViewTasks />} />
-      <Route path="/edit" element={<EditTask taskId="some-task-id" />} />
+      <Route path="/edit/:taskId" element={<EditTask />} />
+      <Route path="/callback" element={<CallbackPage />} />
     </Routes>
   );
 };

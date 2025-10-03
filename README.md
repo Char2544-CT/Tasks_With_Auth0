@@ -1,69 +1,17 @@
-# React + TypeScript + Vite
+# Task Management App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Assets
 
-Currently, two official plugins are available:
+- Logo of my App. Provided to Auth0 and placed on every page of my App just for look.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Authorization and Context Provider
 
-## Expanding the ESLint configuration
+- The whole app is wrapped in Auth0Provider so the app is not available without authenticating. The app is also wrapped with a context provider so every page of the app can access the tasks at all times once authenticated and logged in. The login and register buttons are what calls useAuth and redirects the user to the appropriate page. The AuthGuard is meant to wrap individual components. Without proper authentication, it redirects the user to the login page.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Components
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- This is where each page in the app lives. HomePage is essentially the "login" page or landing page. Once authenticated and logged in, the user is shown their tasks through the Profile page. IF user is authenticated they are shown view tasks on the Navbar. Where they can add, remove, mark as complete, or edit a task. The id given to a new task is the current Date converted to a string, ensuring they are all unique.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## Task Logic
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- This is where a reducer lives to handle each action the user picks. Meaning, Add task, remove task, and edit task all change state differently and have different payloads based on user selection. For example ADD_Task has various properties that ultimately add a new task and display it to the user. The payload for add and edit a task use the Task interface to include all the neccesary properties like id, title, description, etc.

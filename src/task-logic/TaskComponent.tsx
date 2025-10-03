@@ -117,7 +117,7 @@ const TaskComponent: React.FC = () => {
             <button onClick={() => removeTask(task.id)} className="remove-btn">
               Remove
             </button>
-            <Link to={`/edit/${task.id}`} style={{ marginLeft: "0.5rem" }}>
+            <Link to={`/edit/${task.id}`} className="edit-button">
               Edit
             </Link>
           </li>
